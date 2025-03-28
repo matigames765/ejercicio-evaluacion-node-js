@@ -1,0 +1,15 @@
+{
+  "name": "ejercicio-1-evaluacion-node-js",
+  "version": "0.0.1",
+  "description": "ejercicio 1 de la evaluacion de node js",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matías Games",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
