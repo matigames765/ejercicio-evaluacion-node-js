@@ -20,8 +20,7 @@ const pidiendoDatos = async() => {
         const argv = yargs.command('archivoJson', 'para pedir nombre de archivo json',{
             file: {
                 describe: 'nombre del archivo json',
-                default: 'default.json',
-                demandOption: true,
+                default: 'productos.json',
                 type: 'string'
             }
         })
@@ -39,19 +38,21 @@ const pidiendoDatos = async() => {
         }
 
 
-        if(argv.file !== "default.json"){
-            const arrayJsons = []
-            arrayJsons.push(dataJson)
-            fs.writeFileSync(argv.file, JSON.stringify(arrayJsons, null, 2))
-        }else{
-            const arrayJsons = []
-            arrayJsons.push(dataJson)
-            fs.writeFileSync('./productos.json', JSON.stringify(arrayJsons, null, 2))
+        if (argv._.includes('archivoJson')){
+            if(argv.file !== 'productos.json'){
+                const arrayJsons = []
+                arrayJsons.push(dataJson)
+                fs.writeFileSync(argv.file, JSON.stringify(arrayJsons, null, 2))
+            }else{
+                const arrayJsons = []
+                arrayJsons.push(dataJson)
+                fs.writeFileSync('./productos.json', JSON.stringify(arrayJsons, null, 2))
+            }
+    
+            const contenidoArchivo = fs.readFileSync(argv.file, 'utf-8')
+    
+            console.log("Contenido del archivo json:\n" + contenidoArchivo)
         }
-
-        const contenidoArchivo = fs.readFileSync(argv.file, 'utf-8')
-
-        console.log("Contenido del archivo json:\n" + contenidoArchivo)
         
     }catch(error){
         console.log("Hubo el siguiente error: ", error)
